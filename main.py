@@ -13,10 +13,17 @@ soup = BeautifulSoup(URL, "html.parser")
 
 titles = soup.find_all(name="h3", class_="title")
 
-# titles_text = [title.getText() for title in titles]
+titles_text = []
 for title in titles:
-    print(title.getText())
-# print(title_div)
+    titles_text.append(title.getText())
+
+titles_text.reverse()
+print(titles_text)
+
+with open("movies.txt", "w") as file:
+    for title in titles_text:
+        file.write(title)
+        file.write("\n")
 
 """
 echo "# workout-tracking" >> README.md
